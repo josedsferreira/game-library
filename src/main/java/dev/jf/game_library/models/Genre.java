@@ -2,6 +2,8 @@ package dev.jf.game_library.models;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,6 +32,7 @@ public class Genre {
         joinColumns = @JoinColumn(name = "genre_id"),
         inverseJoinColumns = @JoinColumn(name = "game_id")
     )
+    @JsonIgnore
     Set<Game> gamesInThisGenre;
 
     public Integer getGenreId() {

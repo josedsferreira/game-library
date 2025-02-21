@@ -3,6 +3,8 @@ package dev.jf.game_library.models;
 import java.time.LocalDate;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import dev.jf.game_library.models.enums.Gender;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,6 +39,7 @@ public class Person {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy="person")
+    @JsonIgnore
     Set<GamePeople> gamesWorkedOn;
 
     public Integer getPersonId() {

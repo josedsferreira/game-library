@@ -2,6 +2,9 @@ package dev.jf.game_library.models;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -20,11 +23,13 @@ public class GamePlatforms {
     @ManyToOne
     @MapsId("gameId")
     @JoinColumn(name="game_id")
+    @JsonBackReference
     Game game;
 
     @ManyToOne
     @MapsId("platformId")
     @JoinColumn(name="platform_id")
+    @JsonManagedReference
     Platform platform;
 
     @Column(name="release_date_NA")

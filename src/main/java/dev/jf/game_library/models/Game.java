@@ -5,6 +5,8 @@ import java.util.Set;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -58,10 +60,12 @@ public class Game {
     Set<GamePeople> developers;
 
     @OneToMany(mappedBy="game")
+    @JsonManagedReference
     Set<GamePlatforms> platforms;
 
     // Simple many to many relations
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
         name = "game_genres", 
         joinColumns = @JoinColumn(name = "game_id"), 

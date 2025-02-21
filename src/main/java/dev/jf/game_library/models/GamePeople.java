@@ -1,5 +1,8 @@
 package dev.jf.game_library.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -18,11 +21,13 @@ public class GamePeople {
     @ManyToOne
     @MapsId("gameId")
     @JoinColumn(name="game_id")
+    @JsonBackReference
     Game game;
 
     @ManyToOne
     @MapsId("personId")
     @JoinColumn(name="person_id")
+    @JsonManagedReference
     Person person;
 
     @Column(name="job_role")

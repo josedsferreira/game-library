@@ -6,6 +6,9 @@ import java.util.Set;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -52,6 +55,7 @@ public class Platform {
     private Integer generation;
 
     @OneToMany(mappedBy="platform")
+    @JsonBackReference
     Set<GamePlatforms> games;
 
     public Integer getPlatformId() {
